@@ -1,0 +1,10 @@
+imap.gmx.de
+imap.mail.com
+secureimap.t-online.de
+imap.web.de
+imap.mail.yahoo.com
+imap-mail.outlook.com
+mx.freenet.de
+imap.de.aol.com
+imap.arcor.de
+imap.gmail.com
