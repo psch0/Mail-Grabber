@@ -160,12 +160,14 @@ namespace MailChecker
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.Out.WriteLineAsync(string.Format("{0}:{1} Valid [{2}/{3}/{4}]", i.Email, i.Passw, ++good, ++j, Count));
+
                             Console.ResetColor();
                         }
                         else
                         {
                             Console.ResetColor();
                             Console.Out.WriteLineAsync(string.Format("{0}:{1} Invalid [{2}/{3}/{4}]", i.Email, i.Passw, ++bad, ++j, Count));
+                            Console.Out.WriteLineAsync(i.Provider);
                         }
                     }
                     await imap.Disconnect();
@@ -272,6 +274,22 @@ namespace MailChecker
                         {
                             c[i].Provider = imap_providers[j];
                             break;
+                        }
+                        else if(c[i].Email.Contains("hotmail.") || c[i].Email.Contains("live.") || c[i].Email.Contains("outlook."))
+                        {
+                            if(imap_providers[j].Contains("imap-mail.outlook.com"))
+                            {
+                                c[i].Provider = imap_providers[j];
+                                break;
+                            }
+                        }
+                        else if(c[i].Email.Contains("aol."))
+                        {
+                            if (imap_providers[j].Contains("imap.de.aol.com"))
+                            {
+                                c[i].Provider = imap_providers[j];
+                                break;
+                            }
                         }
                     }
                 }
